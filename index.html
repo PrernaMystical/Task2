@@ -32,16 +32,52 @@
               }
             });
 </script>
+    <html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@0.3.2/dist/mindar.prod.js"></script>
+  </head>
+  <body>
+    <script>
+    window.onload = function() {
+        AFRAME.registerComponent('videohandler', {
+            init: function () {
+                var marker = this.el;
+
+                this.vid = document.querySelector("#demo");
+
+                marker.addEventListener('markerFound', function () {
+                    this.vid.play();
+                }.bind(this));
+
+        marker.addEventListener('markerLost', function() {
+            this.vid.pause();
+            this.vid.currentTime = 0;
+        }.bind(this));
+            }
+        });
+    };
+       paintandquestPreviewButton.addEventListener('click', () => {
+              paintandquestPreviewButton.setAttribute("visible", false);
+              const testVideo = document.createElement( "video" );
+              document.querySelector("#paintandquest-video-link").play();
+              
+              }
+            });
+</script>
     <a-scene 
     videohandler 
     mindar="imageTargetSrc: https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@0.3.1/examples/assets/card-example/card.mind; showStats: true;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
     <a-assets>
-      <img id="card" src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@0.3.1/examples/assets/card-example/card.mind; showStats:true;" />
+      <img id="card" src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@0.3.1/examples/assets/ card-example/card.png" />
+      <a-entity id="videocard">
+          <img id="icon-play" src="https://hiukim.github.io/mind-ar-js-doc/samples/assets/card-example/icons/play.png" >
+            </a-entity>
     </a-assets>
     <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
     <a-entity mindar-image-target="targetIndex: 0">
-    <a-video id="paintandquest-video-link" webkit-playsinline playsinline src="video_task3.mp4" width="1" height="0.552" position="0 0 0"></a-video>
-              <a-image id="paintandquest-preview-button" class="clickable" alpha-test="0.5" position="0 0 0" height="0.552" width="1">
+    <a-video id="paintandquest-video-link" webkit-playsinline playsinline width="1" height="0.552" position="0 0 0"></a-video>
+              <a-image id="paintandquest-preview-button" class="clickable" src="https://rawcdn.githack.com/MysticalProductions/webar_Album/6fdc400627ad57dc30189131f0e5c1a4afe0de53/newyork.mp4" alpha-test="0.5" position="0 0 0" height="0.552" width="1">
               </a-image>
 
     </a-entity>
