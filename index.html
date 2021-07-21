@@ -32,39 +32,6 @@
               }
             });
 </script>
-    <html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@0.3.2/dist/mindar.prod.js"></script>
-  </head>
-  <body>
-    <script>
-    window.onload = function() {
-        AFRAME.registerComponent('videohandler', {
-            init: function () {
-                var marker = this.el;
-
-                this.vid = document.querySelector("#demo");
-
-                marker.addEventListener('markerFound', function () {
-                    this.vid.play();
-                }.bind(this));
-
-        marker.addEventListener('markerLost', function() {
-            this.vid.pause();
-            this.vid.currentTime = 0;
-        }.bind(this));
-            }
-        });
-    };
-       paintandquestPreviewButton.addEventListener('click', () => {
-              paintandquestPreviewButton.setAttribute("visible", false);
-              const testVideo = document.createElement( "video" );
-              document.querySelector("#paintandquest-video-link").play();
-              
-              }
-            });
-</script>
     <a-scene 
     videohandler 
     mindar="imageTargetSrc: https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@0.3.1/examples/assets/card-example/card.mind; showStats: true;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
